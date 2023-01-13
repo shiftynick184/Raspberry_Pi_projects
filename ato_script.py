@@ -43,9 +43,10 @@ except KeyboardInterrupt:
 water_detector = Pin(20, Pin.IN, Pin.PULL_UP)
 print(water_detector.value())
 
-while True:    
-    if water_detector.value() >= 1:
-        time.sleep(21600)
+while True:
+    for i in range(5):
+        if water_detector.value() == 0:
+            sleep(0.5)
             
-    else:
-        messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
+        else:
+            messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
