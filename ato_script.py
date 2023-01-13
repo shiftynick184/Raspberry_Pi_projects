@@ -50,3 +50,4 @@ while True:
             
         else:
             messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
+              break
