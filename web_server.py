@@ -4,8 +4,8 @@ from time import sleep
 from picozero import pico_temp_sensor, pico_led
 import machine
 
-ssid = "It Burns When IP"
-password = "Tr0utK0d@9711"
+ssid = "***********"
+password = "*************"
 
 
 
