@@ -11,7 +11,7 @@ from Onesignal import Notifier
 #defines messager service outlined in Onesignal.py library
 messenger =SMS_Messenger ("OneSiganl App ID",
                           "OneSignal App API Key",
-                         ["+16693382499"], 
+                         ["Twilio Number"], # the number that messages are sent from in Twilio account
                           "ATO Bot",
                           "en")
 
@@ -50,7 +50,7 @@ while True:
             sleep(0.5)
         # when no water detected, value is 1.  Sends a text message and the starts a 6hr timer before sending subsequent message. If container is filled past sensor, messages stop    
         else:
-            messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
+            messenger.send_text("The ATO water level is LOW - Top off the Tank",["OneSignal Subscribed User number"])
             time.sleep(21600)  
             
         break
