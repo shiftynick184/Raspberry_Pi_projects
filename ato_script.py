@@ -8,17 +8,18 @@ import time
 from time import sleep
 from Onesignal import Notifier
 
-messenger =SMS_Messenger ("d44181ad-de37-410f-a285-7f47b0a9fc04",
-                          "NjJjZDlkZTItOWU1YS00OTJmLThhZDMtZjM3ZWZjYTA2ODM4",
-                         ["+16693382499"],
+#defines messager service outlined in Onesignal.py library
+messenger =SMS_Messenger ("OneSiganl App ID",
+                          "OneSignal App API Key",
+                         ["+16693382499"], 
                           "ATO Bot",
                           "en")
 
-#messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
+#Network Parameters
+ssid = "Network Name"
+password = "Network Password"
 
-ssid = "It Burns When IP"
-password = "Tr0utK0d@9711"
-
+#defines connection function
 def connect():
     #Connect to WLAN
     wlan = network.WLAN(network.STA_IF)
@@ -41,14 +42,15 @@ except KeyboardInterrupt:
 '''
 
 water_detector = Pin(20, Pin.IN, Pin.PULL_UP)
-print(water_detector.value())
+#print(water_detector.value()) - used in testing to determine the signal output in Thonny IDE
 
 while True:
     for i in range(1):
-        if water_detector.value() == 0:
+        if water_detector.value() == 0: 
             sleep(0.5)
-            
+        # when no water detected, value is 1.  Sends a text message and the starts a 6hr timer before sending subsequent message. If container is filled past sensor, messages stop    
         else:
             messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
-            time.sleep(21600)
+            time.sleep(21600)  
+            
         break
