@@ -41,16 +41,28 @@ except KeyboardInterrupt:
    Define sensors inputs
 '''
 
-water_detector = Pin(20, Pin.IN, Pin.PULL_UP)
-#print(water_detector.value()) - used in testing to determine the signal output in Thonny IDE
+water_detector = Pin(20,Pin.IN,Pin.PULL_UP) #Pin(20, Pin.IN, Pin.PULL_UP)
+greenled = Pin(0, Pin.OUT)
+redled = Pin(1, Pin.OUT)
+print(water_detector.value())
+      
+    
+
+water = 0
+no_water = 1
 
 while True:
     for i in range(1):
-        if water_detector.value() == 0: 
-            sleep(0.5)
-        # when no water detected, value is 1.  Sends a text message and the starts a 6hr timer before sending subsequent message. If container is filled past sensor, messages stop    
-        else:
-            messenger.send_text("The ATO water level is LOW - Top off the Tank",["OneSignal Subscribed User number"])
-            time.sleep(21600)  
+        if water_detector.value() == 0:
+           greenled.on()
+           redled.off()
+           sleep(0.5)
             
+            
+        else:
+            messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
+            redled.on()
+            greenled.off()
+            time.sleep(21600)
+        
         break
