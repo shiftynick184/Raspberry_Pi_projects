@@ -53,7 +53,7 @@ no_water = 1
 
 while True:
     for i in range(1):
-        if water_detector.value() == 0:
+        if water_detector.value() == 0: #the contactless sensor returns a '0' when it senses water.
            greenled.on()
            redled.off()
            sleep(0.5)
