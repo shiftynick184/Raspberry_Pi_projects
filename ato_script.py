@@ -63,6 +63,6 @@ while True:
             messenger.send_text("The ATO water level is LOW - Top off the Tank",["+17657448305"])
             redled.on()
             greenled.off()
-            time.sleep(21600)
+            time.sleep(21600) # Sleeps for 6 hours before sending subsequent message(s)
         
         break
